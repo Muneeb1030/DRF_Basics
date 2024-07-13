@@ -13,6 +13,8 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    'jazzmin',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -95,3 +97,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = "profile_app.UserProfile"
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Django | API Basics",
+    "site_header": "DjangoAPI",
+    "site_brand": "API Basics",
+    # "site_logo": "static/img/logo.png",
+    "login_logo": None,
+    "welcome_sign": "Welcome to the DLMS",
+    "copyright": "PlaySphere",
+}
+JAZZMIN_UI_TWEAKS = {
+    "footer_small_text": True,
+    "navbar": "navbar-dark",
+    "navbar_fixed": True,
+    "footer_fixed": True,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-primary",
+    "sidebar_disable_expand": True,
+    "theme": "cyborg"
+}
