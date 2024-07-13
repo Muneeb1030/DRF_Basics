@@ -3,25 +3,27 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, Permis
 
 
 class UserProfileManager(BaseUserManager):
-    def create_user(self, name, email, password=None):
+    def create_user(self, name, email, password=None, **extra_fields):
         if not email:
             raise ValueError("Email is not Provided")
         
         email = self.normalize_email(email=email)
-        user = self.model(email=email, name=name)
+        user = self.model(email=email, name=name, **extra_fields)
         
         user.set_password(password)
         user.save(using=self._db)
-        
         return user
-    
-    def create_superuser(self, name, email, password):
-        user = self.create_user(name=name, email=email, password=password)
+
+    def create_superuser(self, name, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
         
-        user.is_superuser = True
-        user.is_staff = True
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
         
-        return user
+        return self.create_user(name, email, password, **extra_fields)
 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=254, unique=True)
