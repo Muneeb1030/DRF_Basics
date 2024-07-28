@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 
+from django.conf import settings
+
 
 class UserProfileManager(BaseUserManager):
     def create_user(self, name, email, password=None, **extra_fields):
@@ -44,3 +46,12 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     
     def get_full_name(self):
         return self.name
+    
+    
+class UserProfileFeed(models.Model):
+    user_profile = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user_status =  models.CharField(max_length=254)
+    date_created = models.DateField(auto_now_add=True)
+    
+    def __str__(self) -> str:
+        return self.user_status

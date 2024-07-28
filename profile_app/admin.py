@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import UserProfile
+from .models import UserProfile, UserProfileFeed
 
 class UserProfileAdmin(BaseUserAdmin):
     list_display = ('email', 'name', 'is_staff', 'is_active')
@@ -20,3 +20,4 @@ class UserProfileAdmin(BaseUserAdmin):
     ordering = ('email',)
 
 admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(UserProfileFeed)

@@ -21,3 +21,9 @@ class UserProfileSerializer(ModelSerializer):
         )
         
         return user
+    
+class UserProfileFeedSerializer(ModelSerializer):
+    class Meta:
+        model = models.UserProfileFeed
+        fields = ('id', 'user_profile', 'user_status', 'date_created')
+        extra_kwargs = {'user_profile':{'read_only': True}}
