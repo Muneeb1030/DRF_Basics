@@ -23,8 +23,8 @@ Ensure you have the following installed before proceeding:
 ## Installation
 - Clone the Repository:
 ```
-git clone https://github.com/your/repository.git
-cd repository/
+git clone https://github.com/Muneeb1030/DRF_Basics.git
+cd DRF_Basics/
 ```
 - Install Dependencies:
 ```

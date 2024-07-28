@@ -13,6 +13,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
+    'drf_yasg',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -94,8 +95,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 AUTH_USER_MODEL = "profile_app.UserProfile"
+
+
 
 JAZZMIN_SETTINGS = {
     "site_title": "Django | API Basics",
